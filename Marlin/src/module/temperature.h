@@ -831,15 +831,19 @@ class Temperature {
 
       static void setTargetHotend(const celsius_t celsius, const uint8_t E_NAME) {
         const uint8_t ee = HOTEND_INDEX;
+        /*
         #if MILLISECONDS_PREHEAT_TIME > 0
           if (celsius == 0)
             reset_preheat_time(ee);
           else if (temp_hotend[ee].target == 0)
             start_preheat_time(ee);
         #endif
+        */
         TERN_(AUTO_POWER_CONTROL, if (celsius) powerManager.power_on());
+        /*
         temp_hotend[ee].target = _MIN(celsius, hotend_max_target(ee));
         start_watching_hotend(ee);
+        */
       }
 
       static bool isHeatingHotend(const uint8_t E_NAME) {
